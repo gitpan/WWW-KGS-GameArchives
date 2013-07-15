@@ -16,6 +16,11 @@ META.yml
 README
 t/00_compile.t
 t/10_basic.t
-t/20_scrape.t
-t/expected.pl
-t/input.html
+t/20_bug_calendar_1970.t
+t/21_user.t
+t/data/bug-calendar-1970/expected.pl
+t/data/bug-calendar-1970/input.html
+t/data/dump.pl
+t/data/user/expected.pl
+t/data/user/input.html
+t/Util.pm

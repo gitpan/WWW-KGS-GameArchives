@@ -6,7 +6,7 @@ use Carp qw/croak/;
 use URI;
 use Web::Scraper;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 sub new {
     my $class = shift;
@@ -71,7 +71,7 @@ sub scrape {
     my $self     = shift;
     my $result   = $self->_scraper->scrape( @_ );
     my $games    = $result->{games};
-    my $calendar = delete $result->{calendar};
+    my $calendar = $result->{calendar};
 
     $result->{version} = $self->VERSION;
 
@@ -87,7 +87,12 @@ sub scrape {
         }
     }
 
-    $result->{calendar} = \@calendar;
+    if ( @calendar == 1 and $calendar[0]{year} == 1970 ) { # KGS's bug
+        delete $result->{calendar};
+    }
+    else {
+        $result->{calendar} = \@calendar;
+    }
 
     return $result unless $games;
 
