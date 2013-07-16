@@ -52,7 +52,6 @@ DESCRIPTION
 
           $result;
           # => {
-          #     version => '0.02',
           #     summary => 'Games of KGS player foo, ...',
           #     games => [ # sorted by "start_time" in descending order
           #         {
@@ -125,6 +124,10 @@ DESCRIPTION
         The given arguments are passed to Web::Scraper's "scrape" method.
         "query" method is just a wrapper of this method. For example, you
         can pass URIs included by the return value of "query" method.
+
+FILTERING VALUES
+    This module doesn't modify the values of $result at all. Use Moo's or
+    Mouse's "coerce" to filter values. See "examples/".
 
 SEE ALSO
     Web::Scraper

@@ -2,11 +2,10 @@ package WWW::KGS::GameArchives;
 use 5.008_009;
 use strict;
 use warnings;
-use Carp qw/croak/;
 use URI;
 use Web::Scraper;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 sub new {
     my $class = shift;
@@ -72,8 +71,6 @@ sub scrape {
     my $result   = $self->_scraper->scrape( @_ );
     my $games    = $result->{games};
     my $calendar = $result->{calendar};
-
-    $result->{version} = $self->VERSION;
 
     return $result unless $calendar;
 
@@ -205,7 +202,6 @@ The hashref is formatted as follows:
 
   $result;
   # => {
-  #     version => '0.02',
   #     summary => 'Games of KGS player foo, ...',
   #     games => [ # sorted by "start_time" in descending order
   #         {
@@ -288,6 +284,12 @@ C<query> method is just a wrapper of this method. For example,
 you can pass URIs included by the return value of C<query> method.
 
 =back
+
+=head1 FILTERING VALUES
+
+This module doesn't modify the values of C<$result> at all.
+Use L<Moo>'s or L<Mouse>'s C<coerce> to filter values.
+See C<examples/>.
 
 =head1 SEE ALSO
 

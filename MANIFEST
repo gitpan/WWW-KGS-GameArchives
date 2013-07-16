@@ -1,5 +1,11 @@
 .shipit
 Changes
+examples/lib/WWW/KGS/GameArchives/Result.pm
+examples/lib/WWW/KGS/GameArchives/Result/Game.pm
+examples/lib/WWW/KGS/GameArchives/Result/User.pm
+examples/t/game.t
+examples/t/result.t
+examples/t/user.t
 inc/Module/Install.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Can.pm
@@ -16,11 +22,9 @@ META.yml
 README
 t/00_compile.t
 t/10_basic.t
-t/20_bug_calendar_1970.t
-t/21_user.t
+t/20_static.t
 t/data/bug-calendar-1970/expected.pl
 t/data/bug-calendar-1970/input.html
 t/data/dump.pl
 t/data/user/expected.pl
 t/data/user/input.html
-t/Util.pm
